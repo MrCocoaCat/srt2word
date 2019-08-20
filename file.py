@@ -40,7 +40,7 @@ def cover(filepath,out_dirpath):
             b = srt2list(filepath)
 
             document = Document()
-            table = document.add_table(rows=0, cols=4)
+            table = document.add_table(rows=0, cols=4, style="Table Grid" )
             ### ÅĞ¶Ï
             # for line in f1.readlines():  # ±éÀúsrt×ÖÄ»ÎÄ¼ş
             for j in range(0, len(b)):
