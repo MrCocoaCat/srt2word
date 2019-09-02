@@ -1,7 +1,5 @@
 # coding=gbk
-
-import os,time
-import docx
+import os, time
 from docx import Document
 
 import chardet
@@ -53,4 +51,5 @@ def cover(filepath, out_dirpath):
             document.save(filename_doc_path)
     end = time.time()
     print('Task %s runs %0.2f seconds.' % (name, (end - start)))
+    return filepath
 
