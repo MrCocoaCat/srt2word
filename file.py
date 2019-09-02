@@ -7,22 +7,22 @@ from docx import Document
 import chardet
 
 
-
-
 def srt2list(filepath):
     with open(filepath, mode='rb') as f:
         result = chardet.detect(f.read())
     # print(result['encoding'])
     # f1 = open(filepath, encoding=result['encoding'])
     # temp = f1.read()
-
     with open(filepath, encoding=result['encoding']) as f1:
-        # for line in f1:
-        a = list(f1)
+        c = list(f1)
+        a = [i.rstrip() for i in c]
+    # print(a)
     b = [a[i:i + 4] for i in range(0, len(a), 4)]
+    # print(b)
     return b
 
-def cover(filepath,out_dirpath):
+
+def cover(filepath, out_dirpath):
     print('Run task %s (%s)...' % (filepath, os.getpid()))
     start = time.time()
 
@@ -40,7 +40,7 @@ def cover(filepath,out_dirpath):
             b = srt2list(filepath)
 
             document = Document()
-            table = document.add_table(rows=0, cols=4, style="Table Grid" )
+            table = document.add_table(rows=0, cols=4, style="Table Grid")
             ### ÅÐ¶Ï
             # for line in f1.readlines():  # ±éÀúsrt×ÖÄ»ÎÄ¼þ
             for j in range(0, len(b)):
