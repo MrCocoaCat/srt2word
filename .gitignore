@@ -121,3 +121,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/1212.py
+/1111.py

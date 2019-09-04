@@ -1,7 +1,6 @@
-# coding=gbk
+# -*- coding: utf-8 -*-
 import os, time
 from docx import Document
-
 import chardet
 
 
@@ -39,8 +38,8 @@ def cover(filepath, out_dirpath):
 
             document = Document()
             table = document.add_table(rows=0, cols=4, style="Table Grid")
-            ### ÅĞ¶Ï
-            # for line in f1.readlines():  # ±éÀúsrt×ÖÄ»ÎÄ¼ş
+            ### åˆ¤æ–­
+            # for line in f1.readlines():  # éå†srtå­—å¹•æ–‡ä»¶
             for j in range(0, len(b)):
                 cells = table.add_row().cells
                 cells[0].text = str(b[j][0])
@@ -53,3 +52,31 @@ def cover(filepath, out_dirpath):
     print('Task %s runs %0.2f seconds.' % (name, (end - start)))
     return filepath
 
+
+def word_to_srt(filepath, out_dirpath):
+    print('Run task %s (%s)...' % (filepath, os.getpid()))
+    start = time.time()
+
+    if os.path.isfile(filepath):
+        print(filepath)
+        filename = os.path.basename(filepath)
+        print(filename)
+        name, suffix = os.path.splitext(filename)
+        if suffix == ".docx":
+            filename_srt = name + ".srt"
+            filename_srt_path = os.path.join(out_dirpath, filename_srt)
+            if os.path.isfile(filename_srt_path):
+                os.remove(filename_srt_path)
+            document = Document(filename)
+           # table = document.table()
+           # print(document)
+            ### åˆ¤æ–­
+
+    end = time.time()
+    print('Task %s runs %0.2f seconds.' % (filepath, (end - start)))
+    return filepath
+
+
+if __name__ == '__main__':
+    word_to_srt(filepath="C:\\Users\\54347\\Desktop\\1.docx",
+                out_dirpath="C:\\Users\\54347\\Desktop")
